@@ -17,10 +17,12 @@ spec:
     server: {{ .Values.destination.server }}
     namespace: {{ .Values.destination.namespace }}
   syncPolicy:
+    {{ if .Values.autosync }}
     automated:
       allowEmpty: false
       prune: true
       selfHeal: true
+    {{ end }}
     retry:
       backoff:
         duration: "10s"
