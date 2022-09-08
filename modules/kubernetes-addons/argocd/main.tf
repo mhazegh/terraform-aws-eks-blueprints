@@ -83,7 +83,7 @@ resource "helm_release" "argocd_application" {
   
   set {
     name = "destination.namespace"
-    value = each.value.destinationNamespace
+    value = each.value.destination_namespace
     type = "string"
   }
 
@@ -105,7 +105,7 @@ resource "kubectl_manifest" "argocd_kustomize_application" {
       sourceTargetRevision = each.value.target_revision
       sourcePath           = each.value.path
       destinationServer    = each.value.destination
-      destinationNamespace = each.value.destinationNamespace
+      destinationNamespace = each.value.destination_namespace
     }
   )
 

@@ -26,6 +26,7 @@ locals {
     namespace          = local.helm_config["namespace"]
     target_revision    = "HEAD"
     destination        = "https://kubernetes.default.svc"
+    destination_namespace = local.helm_config["namespace"]
     project            = "default"
     values             = {}
     type               = "helm"
