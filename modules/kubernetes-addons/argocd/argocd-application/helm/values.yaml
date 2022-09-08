@@ -1,6 +1,8 @@
 # Application Name
 name: ""
 
+namespace: ""
+
 # The ArgoCD Project the Application belongs to.
 project: "default"
 
