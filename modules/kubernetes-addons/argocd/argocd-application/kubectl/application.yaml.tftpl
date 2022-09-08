@@ -15,7 +15,7 @@ spec:
     server: ${destinationServer}
     namespace: ${destinationNamespace}
   syncPolicy:
-    %{ if autosync != "false" }
+    %{ if autosync }
     automated:
       allowEmpty: false
       prune: true
