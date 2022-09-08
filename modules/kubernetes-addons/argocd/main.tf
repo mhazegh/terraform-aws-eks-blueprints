@@ -38,12 +38,6 @@ resource "helm_release" "argocd_application" {
     type  = "string"
   }
 
-  set {
-    name = "namespace"
-    value = each.value.namespace
-    type = "string"
-  }
-
   # Source Config.
   set {
     name  = "source.repoUrl"
@@ -86,6 +80,12 @@ resource "helm_release" "argocd_application" {
     value = each.value.destination
     type  = "string"
   }
+  
+  set {
+    name = "destination.namespace"
+    value = each.value.destinationNamespace
+    type = "string"
+  }
 
   depends_on = [module.helm_addon]
 }
@@ -105,6 +105,7 @@ resource "kubectl_manifest" "argocd_kustomize_application" {
       sourceTargetRevision = each.value.target_revision
       sourcePath           = each.value.path
       destinationServer    = each.value.destination
+      destinationNamespace = each.value.destinationNamespace
     }
   )
 
